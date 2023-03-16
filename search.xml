@@ -20,4 +20,39 @@
 <h3 id="（4）hello-world测试"><a href="#（4）hello-world测试" class="headerlink" title="（4）hello-world测试"></a>（4）hello-world测试</h3><p>输入docker run hello-world，首先下载镜像需等待一段时间。当看到<br><img  src="https://cdn.nlark.com/yuque/0/2020/jpeg/677605/1608714261945-f3758f10-64a3-47f0-82a5-f18f16812d5d.jpeg#height=454&id=Vej4L&name=481C409232D115A14FA063259512585F.jpg&originHeight=605&originWidth=734&originalType=binary&ratio=1&rotation=0&showTitle=false&size=254628&status=done&style=stroke&title=&width=551"  ><span class="image-caption">481C409232D115A14FA063259512585F.jpg</span></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>Docker部署与搭建</title>
+    <url>/2023/03/06/Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h1 id="Java-Spring-入门指南"><a href="#Java-Spring-入门指南" class="headerlink" title="Java Spring 入门指南"></a>Java Spring 入门指南</h1><p>Java Spring 是一个流行的 Java 开发框架，提供了很多现成的组件和工具，方便开发者快速构建高质量的 Web 应用程序。本文将介绍如何安装、部署和运行 Java Spring，并提供一些示例代码和图片。</p>
+<h2 id="安装-Java-Spring"><a href="#安装-Java-Spring" class="headerlink" title="安装 Java Spring"></a>安装 Java Spring</h2><p>安装 Java Spring 需要先安装 Java 开发环境（JDK）。如果你尚未安装 JDK，请先前往 Oracle 官网下载并安装合适的版本。安装完成后，可以按照以下步骤安装 Java Spring：</p>
+<ol>
+<li>前往 <a href="https://spring.io/">Spring 官网</a> 下载最新的发布版。</li>
+<li>解压下载的文件，在本地计算机上创建一个目录用于存放 Spring 相关文件。</li>
+<li>设置环境变量 <code>SPRING_HOME</code>，指向上一步中创建的文件夹路径，以便系统能够访问 Spring 组件和工具。</li>
+</ol>
+<h2 id="部署和运行-Spring-应用"><a href="#部署和运行-Spring-应用" class="headerlink" title="部署和运行 Spring 应用"></a>部署和运行 Spring 应用</h2><p>在安装完 Java Spring 后，就可以开始构建和运行应用程序了。以下是一个简单的 Spring 应用程序示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorldApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(HelloWorldApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述示例代码创建了一个名为 “Hello World” 的 Spring 应用程序。要编译和运行该程序，请按照以下步骤操作：</p>
+<ol>
+<li>在终端或命令提示符中，进入项目根目录。</li>
+<li>执行以下命令编译项目：<code>./mvnw package</code></li>
+<li>等待编译完成后，执行以下命令运行项目：<code>java -jar target/hello-world-0.0.1-SNAPSHOT.jar</code></li>
+<li>打开浏览器，在地址栏输入 <code>http://localhost:8080</code>，即可看到 “Hello World” 的欢迎页面。</li>
+</ol>
+<h2 id="使用-Spring-Boot-CLI"><a href="#使用-Spring-Boot-CLI" class="headerlink" title="使用 Spring Boot CLI"></a>使用 Spring Boot CLI</h2><p>除了使用传统的 Maven 或 Gradle 构建工具外，也可以使用 Spring Boot CLI 来快速构建和运行 Spring 应用程序。以下是如何使用 Spring Boot CLI 的示例：</p>
+<ol>
+<li><p>在终端或命令提示符中，输入以下命令安装 Spring Boot CLI：<code>sdk install springboot</code>。</p>
+</li>
+<li><p>创建一个名为 “hello.groovy” 的 Groovy 文件，内容如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">    String hello() &#123;</span><br><span class="line">        <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在终端或命令提示符中，输入以下命令运行应用程序：<code>spring run hello.groovy</code>。</p>
+</li>
+<li><p>打开浏览器，在地址栏输入 <code>http://localhost:8080</code>，即可看到 “Hello World!” 的欢迎消息。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了如何安装、部署和运行 Java Spring 框架，包括使用传统的 Maven 或 Gradle 构建工具和使用 Spring Boot CLI 的方法。通过这些示例，希望能够帮助读者快速入门 Java Spring 并开始开发自己的应用程序。</p>
+]]></content>
+  </entry>
 </search>

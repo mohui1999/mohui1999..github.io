@@ -11,7 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="📬知识点一、什么是DockerDocker 最初是 ...">
+  <meta name="description" content="Java Spring 入门指南Java Spring...">
   <meta name="author" content="Menglei Xie">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -192,30 +192,45 @@
   <div class="head-mask">
     <h1 class="head-title">Docker部署与搭建</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>一月 06, 2023</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>三月 06, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1437</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1621</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h1 id="📬知识点"><a href="#📬知识点" class="headerlink" title="📬知识点"></a><strong>📬</strong>知识点</h1><h2 id="一、什么是Docker"><a href="#一、什么是Docker" class="headerlink" title="一、什么是Docker"></a>一、什么是Docker</h2><p>Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还加入了 Linux 基金会，并成立推动 开放容器联盟（OCI）。<br>Docker 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。最初实现是基于 LXC，从 0.7 版本以后开始去除 LXC，转而使用自行开发的 libcontainer，从 1.11 开始，则进一步演进为使用 runC 和 containerd。</p>
-<p>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。<br>如今，Docker 通过对 Linux 容器技术 LXC（Linux Containers）等进一步优化，提供了各种容器管理工具，通过容器来管理应用，这样便可以达到 “ <strong>Build Once, Works Everywhere</strong> ” 的目的。也就是说对于开发和部署来说，使用 Docker 可以：</p>
-<ul>
-<li>更快速的交付和部署应用环境。</li>
-<li>更高效的资源利用率。</li>
-<li>更便捷的迁移和扩展性。</li>
-<li>更便捷的应用更新管理。</li>
-</ul>
-<h2 id="二、Docker的安装与部署"><a href="#二、Docker的安装与部署" class="headerlink" title="二、Docker的安装与部署"></a>二、Docker的安装与部署</h2><h3 id="1-Dcoker安装"><a href="#1-Dcoker安装" class="headerlink" title="1.Dcoker安装"></a>1.Dcoker安装</h3><p>此处一<strong>CentOS</strong>为例，不同的Linux发行版本安装过程有所差异。<br>安装环境：Centos 3.10.0-1160.el7.x86_64</p>
-<h3 id="（1）安装命令如下："><a href="#（1）安装命令如下：" class="headerlink" title="（1）安装命令如下："></a>（1）安装命令如下：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker  ==》 安装docker    </span><br><span class="line">service docker start   ==》 启动docker服务</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2020/jpeg/677605/1608711081436-ae7f2693-99a6-45a3-aeb8-3d377a9b2762.jpeg#height=215&id=Z7f8d&name=B1270948DC1386F061F9F137A55CAE3C.jpg&originHeight=286&originWidth=729&originalType=binary&ratio=1&rotation=0&showTitle=false&size=114432&status=done&style=stroke&title=&width=547"><img    class="lazyload" data-original="https://cdn.nlark.com/yuque/0/2020/jpeg/677605/1608711081436-ae7f2693-99a6-45a3-aeb8-3d377a9b2762.jpeg#height=215&id=Z7f8d&name=B1270948DC1386F061F9F137A55CAE3C.jpg&originHeight=286&originWidth=729&originalType=binary&ratio=1&rotation=0&showTitle=false&size=114432&status=done&style=stroke&title=&width=547" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">B1270948DC1386F061F9F137A55CAE3C.jpg</span></a></p>
-<h3 id="（2）查看版本号"><a href="#（2）查看版本号" class="headerlink" title="（2）查看版本号"></a>（2）查看版本号</h3><p><strong>通过命令</strong>docker version<strong>查看Docker版本号来看是否安装成功：</strong><br><img    class="lazyload" data-original="https://cdn.nlark.com/yuque/0/2020/jpeg/677605/1608714329153-d14b99d9-28ad-44b7-adb1-f1acae707f15.jpeg#height=245&id=UvxCT&name=6ABA7CDD9F9BDF3FCB46EAC173677ADE.jpg&originHeight=327&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&size=94823&status=done&style=shadow&title=&width=539" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">6ABA7CDD9F9BDF3FCB46EAC173677ADE.jpg</span></p>
-<h3 id="（3）镜像加速"><a href="#（3）镜像加速" class="headerlink" title="（3）镜像加速"></a>（3）镜像加速</h3><p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：<a target="_blank" rel="noopener" href="http://hub-mirror.c.163.com/">http://hub-mirror.c.163.com</a>。<br>新版的 Docker 使用 <strong>&#x2F;etc&#x2F;docker&#x2F;daemon.json</strong>（Linux） 来配置 Daemon。<br>在该配置文件中加入（没有该文件的话，请先建一个）：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 添加至/etc/docker/daemon.json中*/</span></span><br><span class="line"><span class="punctuation">&#123;</span> </span><br><span class="line">	<span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://c.163.com/hub#/m/home/&quot;</span><span class="punctuation">]</span>    </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="（4）hello-world测试"><a href="#（4）hello-world测试" class="headerlink" title="（4）hello-world测试"></a>（4）hello-world测试</h3><p>输入docker run hello-world，首先下载镜像需等待一段时间。当看到<br><img    class="lazyload" data-original="https://cdn.nlark.com/yuque/0/2020/jpeg/677605/1608714261945-f3758f10-64a3-47f0-82a5-f18f16812d5d.jpeg#height=454&id=Vej4L&name=481C409232D115A14FA063259512585F.jpg&originHeight=605&originWidth=734&originalType=binary&ratio=1&rotation=0&showTitle=false&size=254628&status=done&style=stroke&title=&width=551" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">481C409232D115A14FA063259512585F.jpg</span></p>
+        <h1 id="Java-Spring-入门指南"><a href="#Java-Spring-入门指南" class="headerlink" title="Java Spring 入门指南"></a>Java Spring 入门指南</h1><p>Java Spring 是一个流行的 Java 开发框架，提供了很多现成的组件和工具，方便开发者快速构建高质量的 Web 应用程序。本文将介绍如何安装、部署和运行 Java Spring，并提供一些示例代码和图片。</p>
+<h2 id="安装-Java-Spring"><a href="#安装-Java-Spring" class="headerlink" title="安装 Java Spring"></a>安装 Java Spring</h2><p>安装 Java Spring 需要先安装 Java 开发环境（JDK）。如果你尚未安装 JDK，请先前往 Oracle 官网下载并安装合适的版本。安装完成后，可以按照以下步骤安装 Java Spring：</p>
+<ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://spring.io/">Spring 官网</a> 下载最新的发布版。</li>
+<li>解压下载的文件，在本地计算机上创建一个目录用于存放 Spring 相关文件。</li>
+<li>设置环境变量 <code>SPRING_HOME</code>，指向上一步中创建的文件夹路径，以便系统能够访问 Spring 组件和工具。</li>
+</ol>
+<h2 id="部署和运行-Spring-应用"><a href="#部署和运行-Spring-应用" class="headerlink" title="部署和运行 Spring 应用"></a>部署和运行 Spring 应用</h2><p>在安装完 Java Spring 后，就可以开始构建和运行应用程序了。以下是一个简单的 Spring 应用程序示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorldApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(HelloWorldApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述示例代码创建了一个名为 “Hello World” 的 Spring 应用程序。要编译和运行该程序，请按照以下步骤操作：</p>
+<ol>
+<li>在终端或命令提示符中，进入项目根目录。</li>
+<li>执行以下命令编译项目：<code>./mvnw package</code></li>
+<li>等待编译完成后，执行以下命令运行项目：<code>java -jar target/hello-world-0.0.1-SNAPSHOT.jar</code></li>
+<li>打开浏览器，在地址栏输入 <code>http://localhost:8080</code>，即可看到 “Hello World” 的欢迎页面。</li>
+</ol>
+<h2 id="使用-Spring-Boot-CLI"><a href="#使用-Spring-Boot-CLI" class="headerlink" title="使用 Spring Boot CLI"></a>使用 Spring Boot CLI</h2><p>除了使用传统的 Maven 或 Gradle 构建工具外，也可以使用 Spring Boot CLI 来快速构建和运行 Spring 应用程序。以下是如何使用 Spring Boot CLI 的示例：</p>
+<ol>
+<li><p>在终端或命令提示符中，输入以下命令安装 Spring Boot CLI：<code>sdk install springboot</code>。</p>
+</li>
+<li><p>创建一个名为 “hello.groovy” 的 Groovy 文件，内容如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">    String hello() &#123;</span><br><span class="line">        <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在终端或命令提示符中，输入以下命令运行应用程序：<code>spring run hello.groovy</code>。</p>
+</li>
+<li><p>打开浏览器，在地址栏输入 <code>http://localhost:8080</code>，即可看到 “Hello World!” 的欢迎消息。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了如何安装、部署和运行 Java Spring 框架，包括使用传统的 Maven 或 Gradle 构建工具和使用 Spring Boot CLI 的方法。通过这些示例，希望能够帮助读者快速入门 Java Spring 并开始开发自己的应用程序。</p>
 
       </section>
       <section class="extra">
@@ -223,7 +238,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>Menglei Xie</li>
-    <li><strong>本文链接：</strong><a href="http://blog.xml.kim/2023/01/06/Docker%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%90%AD%E5%BB%BA/index.html" title="http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;01&#x2F;06&#x2F;Docker%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%90%AD%E5%BB%BA&#x2F;index.html">http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;01&#x2F;06&#x2F;Docker%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%90%AD%E5%BB%BA&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://blog.xml.kim/2023/03/06/Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/index.html" title="http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;03&#x2F;06&#x2F;Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97&#x2F;index.html">http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;03&#x2F;06&#x2F;Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -242,8 +257,8 @@
         
         
   <nav class="nav">
-    <a href="/2023/03/06/Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"><i class="iconfont iconleft"></i>Docker部署与搭建</a>
     <a></a>
+    <a href="/2023/01/06/Docker%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%90%AD%E5%BB%BA/">Docker部署与搭建<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -263,7 +278,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%AC%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">📬知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFDocker"><span class="toc-text">一、什么是Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Docker%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">二、Docker的安装与部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Dcoker%E5%AE%89%E8%A3%85"><span class="toc-text">1.Dcoker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">（1）安装命令如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-text">（2）查看版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="toc-text">（3）镜像加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89hello-world%E6%B5%8B%E8%AF%95"><span class="toc-text">（4）hello-world测试</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Spring-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="toc-text">Java Spring 入门指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Java-Spring"><span class="toc-text">安装 Java Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%92%8C%E8%BF%90%E8%A1%8C-Spring-%E5%BA%94%E7%94%A8"><span class="toc-text">部署和运行 Spring 应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Spring-Boot-CLI"><span class="toc-text">使用 Spring Boot CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
   </aside>
 
         
