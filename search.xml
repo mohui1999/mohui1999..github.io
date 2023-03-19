@@ -21,8 +21,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Docker部署与搭建</title>
-    <url>/2023/03/06/Java%20Spring%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
+    <title>Java入门教程</title>
+    <url>/2023/03/06/Java%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="Java-Spring-入门指南"><a href="#Java-Spring-入门指南" class="headerlink" title="Java Spring 入门指南"></a>Java Spring 入门指南</h1><p>Java Spring 是一个流行的 Java 开发框架，提供了很多现成的组件和工具，方便开发者快速构建高质量的 Web 应用程序。本文将介绍如何安装、部署和运行 Java Spring，并提供一些示例代码和图片。</p>
 <h2 id="安装-Java-Spring"><a href="#安装-Java-Spring" class="headerlink" title="安装 Java Spring"></a>安装 Java Spring</h2><p>安装 Java Spring 需要先安装 Java 开发环境（JDK）。如果你尚未安装 JDK，请先前往 Oracle 官网下载并安装合适的版本。安装完成后，可以按照以下步骤安装 Java Spring：</p>
 <ol>
@@ -54,5 +54,58 @@
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了如何安装、部署和运行 Java Spring 框架，包括使用传统的 Maven 或 Gradle 构建工具和使用 Spring Boot CLI 的方法。通过这些示例，希望能够帮助读者快速入门 Java Spring 并开始开发自己的应用程序。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>浅述java中的匿名类Anonymous Class转换为Lambda</title>
+    <url>/2023/03/19/%E6%B5%85%E8%BF%B0java%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E7%B1%BBAnonymousClass%E8%BD%AC%E6%8D%A2%E4%B8%BALambda/</url>
+    <content><![CDATA[<h2 id="匿名类Anonymous-Class"><a href="#匿名类Anonymous-Class" class="headerlink" title="匿名类Anonymous Class"></a>匿名类Anonymous Class</h2><p>在Java中，匿名类是一种特殊的内部类，它没有明确的类名，通常用于创建只需要使用一次的类的实例。匿名类通常是在创建父类或接口的实例时使用，可以用作参数传递，也可以用作返回值。</p>
+<p>匿名类的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> 父类构造器(参数列表) &#123;</span><br><span class="line">    <span class="comment">// 匿名类的类体部分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个语法格式中，”父类构造器”是指要创建的父类的构造器，”参数列表”是该构造器的参数列表。在匿名类的类体部分，可以定义成员变量、方法、内部类等内容。</p>
+<p>匿名类的特点包括：</p>
+<ol>
+<li>没有明确的类名，通常使用父类或接口的名字作为类名；</li>
+<li>可以继承父类或实现接口，也可以同时继承父类并实现接口；</li>
+<li>可以定义成员变量、方法、内部类等，但不能定义静态成员变量或静态方法；</li>
+<li>匿名类中的代码块可以使用外部类的成员变量和方法，但是需要将这些成员变量和方法声明为final或者effectively final的变量；</li>
+<li>匿名类的实例只能使用一次，无法重复使用。</li>
+</ol>
+<p>通常情况下，使用Lambda表达式可以替换匿名类的使用，Lambda表达式更加简洁和易读，而且在Java 8及以上版本中支持对函数式接口的直接实现。</p>
+<h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h2><p>在Java 8中，引入了一种新的语法特性——Lambda表达式。Lambda表达式是一种匿名函数，它可以像对象一样传递，可以作为函数式接口的实例使用，可以简化代码，并提高代码的可读性和可维护性。</p>
+<p>Lambda表达式的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">(parameters) -&gt; expression</span><br><span class="line">(parameters) -&gt; &#123; statements; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，”parameters”是参数列表，可以为空，也可以包含一个或多个参数；”expression”是一个表达式，可以是常量、变量、方法调用等，也可以是一个Lambda表达式；”statements”是一个代码块，可以包含多条语句。</p>
+<p>Lambda表达式的特点包括：</p>
+<ol>
+<li>可以替代匿名内部类，简化代码；</li>
+<li>可以作为函数式接口的实例使用，方便函数式编程；</li>
+<li>可以通过方法引用的方式简化Lambda表达式；</li>
+<li>可以实现闭包，即可以访问外部变量；</li>
+<li>可以使用Java 8中新增的Stream API和并发API，提高代码的性能和可读性。</li>
+</ol>
+<p>需要注意的是，Lambda表达式只能用于函数式接口，即只有一个抽象方法的接口。在Lambda表达式中，参数类型可以省略，由编译器自动推断，但是参数个数和顺序必须与接口中的抽象方法一致。</p>
+<h2 id="匿名类Anonymous-Class转为Lambda"><a href="#匿名类Anonymous-Class转为Lambda" class="headerlink" title="匿名类Anonymous Class转为Lambda"></a>匿名类Anonymous Class转为Lambda</h2><p>将匿名类转换为Lambda表达式有一些条件和限制。在满足以下条件时，可以将匿名类转换为Lambda表达式：</p>
+<ol>
+<li><p>函数式接口：要将匿名类转换为Lambda表达式，匿名类必须实现一个函数式接口。函数式接口是只有一个抽象方法的接口。这是因为Lambda表达式仅能表示单个方法实现。</p>
+</li>
+<li><p>无额外字段或方法：匿名类不能有任何额外的字段或方法（除了函数式接口所需的单个抽象方法的实现）。Lambda表达式不能包含字段或额外方法。</p>
+</li>
+<li><p>无构造函数：由于Lambda表达式没有构造函数，匿名类也不能有构造函数。</p>
+</li>
+<li><p>无实例初始化块：Lambda表达式不能包含实例初始化块（即使用{ }定义的代码块），因此匿名类也不能有实例初始化块。</p>
+</li>
+<li><p>无继承限制：Lambda表达式不能继承任何类，因此匿名类不能扩展其他类。匿名类只能实现一个函数式接口。</p>
+</li>
+<li><p>受限访问外部变量：匿名类可以访问外部变量，但Lambda表达式对访问外部变量有一定限制。Lambda表达式只能捕获封闭作用域中声明为final或实际上是final（即不会被修改）的变量。</p>
+</li>
+</ol>
+<p>如果匿名类满足上述条件，可以将其转换为Lambda表达式。需要注意的是，虽然在某些情况下可以将匿名类转换为Lambda表达式，但它们在语义上并不总是等价的，尤其是在涉及this引用或同步方法时。</p>
+<p>以下是一个简单的例子，说明如何将匿名类转换为Lambda表达式。我们将使用一个函数式接口Greeting，它有一个名为sayHello的抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义一个函数式接口</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Greeting</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">(String name)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LambdaExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用匿名类实现Greeting接口</span></span><br><span class="line">        <span class="type">Greeting</span> <span class="variable">anonymousGreeting</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Greeting</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">(String name)</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot; (from anonymous class)!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        anonymousGreeting.sayHello(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将匿名类转换为Lambda表达式</span></span><br><span class="line">        <span class="type">Greeting</span> <span class="variable">lambdaGreeting</span> <span class="operator">=</span> (name) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Hello, &quot;</span> + name + <span class="string">&quot; (from lambda)!&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        lambdaGreeting.sayHello(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们首先使用匿名类实现了Greeting接口。然后，我们将这个匿名类转换为等效的Lambda表达式。这个转换是可能的，因为我们的匿名类满足了前面提到的条件：它实现了一个函数式接口，且没有额外的字段、方法、构造函数或实例初始化块。</p>
+<p>运行此示例将产生以下输出：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Hello, Alice (<span class="keyword">from</span> anonymous <span class="keyword">class</span>)!</span><br><span class="line">Hello, Bob (<span class="keyword">from</span> <span class="keyword">lambda</span>)!</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>
