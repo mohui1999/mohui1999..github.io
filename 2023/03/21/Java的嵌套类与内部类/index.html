@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Java的嵌套类与内部类 - Seren Home</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="在 Java 中，根据类的定义位置和特性，可以将类分为...">
+  <meta name="author" content="Menglei Xie">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic1.imgdb.cn/item/63672a4716f2c2beb1b6c7f4.jpg',
+        wechat: 'https://pic1.imgdb.cn/item/63672a4016f2c2beb1b6bdae.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Java的嵌套类与内部类</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p><a target="_blank">©2022</a>  |  <a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">皖ICP备19009044号-2</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://s3.uuu.ovh/imgs/2022/11/22/5706ff4d79f48989.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Java的嵌套类与内部类</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>三月 21, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1962</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p>在 Java 中，根据类的定义位置和特性，可以将类分为四种类型：顶层类、嵌套类、内部类和静态嵌套类。</p>
+<p>其中嵌套类和内部类也是非常常见，但是在方法或者变量的使用时会让人糊涂。下面详细看看他们的使用。</p>
+<h2 id="嵌套类（Nested-Class）"><a href="#嵌套类（Nested-Class）" class="headerlink" title="嵌套类（Nested Class）"></a>嵌套类（Nested Class）</h2><p>首先，嵌套类（Nested Class）包含静态嵌套类（Static Nested Class）和非静态嵌套类（Non-static Nested Class，又称为内部类Inner Class）。<br><img    class="lazyload" data-original="https://s3.bmp.ovh/imgs/2023/03/21/e8dd1facfdfb8039.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">Nested Class</span></p>
+<h3 id="静态嵌套类（Static-Nested-Class）"><a href="#静态嵌套类（Static-Nested-Class）" class="headerlink" title="静态嵌套类（Static Nested Class）"></a>静态嵌套类（Static Nested Class）</h3><p>静态嵌套类使用 static 修饰符定义，它可以独立存在，而不依赖于外部类的实例。静态嵌套类不能访问外部类的非静态成员，但可以访问外部类的静态成员。创建静态嵌套类的实例不需要外部类的实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OuterClass</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">staticVariable</span> <span class="operator">=</span> <span class="string">&quot;Static Variable&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">nonStaticVariable</span> <span class="operator">=</span> <span class="string">&quot;Non-static Variable&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">StaticNestedClass</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(staticVariable); <span class="comment">// 可以访问静态变量</span></span><br><span class="line">            <span class="comment">// System.out.println(nonStaticVariable); // 无法访问非静态变量</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="非静态嵌套类（Non-static-Nested-Class）又称内部类（Inner-Class）"><a href="#非静态嵌套类（Non-static-Nested-Class）又称内部类（Inner-Class）" class="headerlink" title="非静态嵌套类（Non-static Nested Class）又称内部类（Inner Class）"></a>非静态嵌套类（Non-static Nested Class）又称内部类（Inner Class）</h3><p>内部类是非静态的嵌套类，它与外部类有一个紧密的关联，并且可以访问外部类的所有成员（包括私有成员）。内部类的实例总是与外部类的实例相关联。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OuterClass</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">staticVariable</span> <span class="operator">=</span> <span class="string">&quot;Static Variable&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">nonStaticVariable</span> <span class="operator">=</span> <span class="string">&quot;Non-static Variable&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">InnerClass</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(staticVariable); <span class="comment">// 可以访问静态变量</span></span><br><span class="line">            System.out.println(nonStaticVariable); <span class="comment">// 可以访问非静态变量</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="成员内部类和局部内部类"><a href="#成员内部类和局部内部类" class="headerlink" title="成员内部类和局部内部类"></a>成员内部类和局部内部类</h3><p>成员内部类: 定义在外部类的成员位置。<br>局部内部类: 定义在外部类的局部位置，也就是外部类中的方法内部。</p>
+<h2 id="嵌套类与外部类的数据访问"><a href="#嵌套类与外部类的数据访问" class="headerlink" title="嵌套类与外部类的数据访问"></a>嵌套类与外部类的数据访问</h2><h3 id="外部类访问嵌套类"><a href="#外部类访问嵌套类" class="headerlink" title="外部类访问嵌套类"></a>外部类访问嵌套类</h3><ol>
+<li>嵌套类是Static的<br>因为Static的是类属性，无需创建实例，所以可以直接通过类名访问。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若是在OuterClass中，可去掉OuterClassName</span></span><br><span class="line">OuterClassName.NestedClassName.methodName()</span><br><span class="line">OuterClassName.NestedClassName.variable <span class="comment">// 变量的访问</span></span><br></pre></td></tr></table></figure></li>
+<li>嵌套类不是是Static的<br>此时类是实例属性，需要创建实例。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">OuterClass</span> <span class="variable">outerObj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OuterClass</span>();</span><br><span class="line">OuterClass.<span class="type">InnerClass</span> <span class="variable">innerObj</span> <span class="operator">=</span> outerObj.<span class="keyword">new</span> <span class="title class_">InnerClass</span>();</span><br><span class="line">outerObj.variable  <span class="comment">// 变量的访问</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="嵌套类访问外部类"><a href="#嵌套类访问外部类" class="headerlink" title="嵌套类访问外部类"></a>嵌套类访问外部类</h3><ol>
+<li>静态嵌套类<br>静态嵌套类可以访问外部类的静态成员，但不能直接访问非静态成员。要访问非静态成员，需要通过外部类的实例。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">staticVariable  <span class="comment">// 外部的静态成员直接访问</span></span><br><span class="line"></span><br><span class="line"><span class="type">OuterClass</span> <span class="variable">outerInstance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OuterClass</span>();</span><br><span class="line">outerInstance.<span class="built_in">this</span>.nonStaticVariable  <span class="comment">// 外部的非静态成员须通过外部实例</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>非静态嵌套类（内部类）<br>内部类可以直接访问外部类的所有成员（包括静态和非静态成员），不需要外部类的实例。</li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Menglei Xie</li>
+    <li><strong>本文链接：</strong><a href="http://blog.xml.kim/2023/03/21/Java%E7%9A%84%E5%B5%8C%E5%A5%97%E7%B1%BB%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/index.html" title="http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;03&#x2F;21&#x2F;Java%E7%9A%84%E5%B5%8C%E5%A5%97%E7%B1%BB%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB&#x2F;index.html">http:&#x2F;&#x2F;blog.xml.kim&#x2F;2023&#x2F;03&#x2F;21&#x2F;Java%E7%9A%84%E5%B5%8C%E5%A5%97%E7%B1%BB%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="https://pic1.imgdb.cn/item/63672a4716f2c2beb1b6c7f4.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/03/19/%E6%B5%85%E8%BF%B0java%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E7%B1%BBAnonymousClass%E8%BD%AC%E6%8D%A2%E4%B8%BALambda/">浅述java中的匿名类Anonymous Class转换为Lambda<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E7%B1%BB%EF%BC%88Nested-Class%EF%BC%89"><span class="toc-text">嵌套类（Nested Class）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B5%8C%E5%A5%97%E7%B1%BB%EF%BC%88Static-Nested-Class%EF%BC%89"><span class="toc-text">静态嵌套类（Static Nested Class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%9D%99%E6%80%81%E5%B5%8C%E5%A5%97%E7%B1%BB%EF%BC%88Non-static-Nested-Class%EF%BC%89%E5%8F%88%E7%A7%B0%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%88Inner-Class%EF%BC%89"><span class="toc-text">非静态嵌套类（Non-static Nested Class）又称内部类（Inner Class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB%E5%92%8C%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text">成员内部类和局部内部类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E7%B1%BB%E4%B8%8E%E5%A4%96%E9%83%A8%E7%B1%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE"><span class="toc-text">嵌套类与外部类的数据访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E7%B1%BB%E8%AE%BF%E9%97%AE%E5%B5%8C%E5%A5%97%E7%B1%BB"><span class="toc-text">外部类访问嵌套类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E7%B1%BB%E8%AE%BF%E9%97%AE%E5%A4%96%E9%83%A8%E7%B1%BB"><span class="toc-text">嵌套类访问外部类</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=2381599284 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://www.instagram.com/xie_menglei/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/mohui1999 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:xiemenglei@xiemenglei.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p><a target="_blank">©2022</a>  |  <a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">皖ICP备19009044号-2</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
