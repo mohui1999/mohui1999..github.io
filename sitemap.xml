@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.xml.kim/about/</loc>
+    
+    <lastmod>2023-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.xml.kim/2023/03/21/Java%E7%9A%84%E5%B5%8C%E5%A5%97%E7%B1%BB%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
     
     <lastmod>2023-03-21</lastmod>
@@ -41,15 +50,6 @@
     <loc>http://blog.xml.kim/galleries/%E6%A8%B1%E8%8A%B1/</loc>
     
     <lastmod>2023-03-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.xml.kim/about/</loc>
-    
-    <lastmod>2023-03-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +103,7 @@
 
   <url>
     <loc>http://blog.xml.kim/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
